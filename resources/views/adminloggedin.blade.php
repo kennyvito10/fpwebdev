@@ -18,6 +18,8 @@
 </head>
 <body>
   <a href="{{ url('/logout') }}"><button  class="btn btn-primary">Logout</button></a>
+  <a href="{{ url('/adminredirect') }}"><button  class="btn btn-primary">Back</button></a>
+
   <div id="main_content">
 
  <li class="selected" id="page1" onclick="change_tab(this.id);">Ordered</li>

@@ -406,6 +406,60 @@ class DashboardController extends Controller
         
     }
 
+    public function adminr()
+    {
+        if (!Session::get('admlogin')){
+            return view('/admin');
+        }else{
+            return view('/adminredirect');
+        }
+    }
+
+    public function adminproduct()
+    {
+        if (!Session::get('admlogin')){
+            return view('/admin');
+        }else{
+            $databrand = DB::table('brands')->get();
+
+            return view('/adminaddproduct', compact('databrand'));
+        }
+    }
+    
+    public function adminproductadd(Request $request){
+        $image = $request->file('image');
+        $this->validate($request, [
+            'image' => 'mimes:jpeg,png,bmp,tiff |max:4096',
+        ],
+        $messages = [
+            'required' => 'The :attribute field is required.',
+            'mimes' => 'Only jpeg, png, bmp,tiff are allowed.'
+            ]
+        );
+
+        $input['imagename'] =  $image -> getClientOriginalName();
+        $image_url = $input['imagename'];
+        $destinationPath = public_path('/images');
+        $image->move($destinationPath,$image_url);
+        // $data = [
+        //     'productName' => $request->input('productname'), 
+        //     'price' => $request->input('productprice'),
+        //     'imgUrl' => $image ,
+        //     'brand_id' => $request->input('productbrand'), 
+        //     'description'=> $request->input('productdesc')
+        // ];
+        // Product::create($data);
+        Product::create([
+            'productName' => $request->input('productname'), 
+            'price' => $request->input('productprice'),
+            'imgUrl' => $image_url ,
+            'brand_id' => $request->input('productbrand'), 
+            'description'=> $request->input('productdesc')
+        ]);
+        return view('/adminaddproduct');
+
+    }
+
 
     public function updateAdminStatusDelivered(Request $request, $id){
         $data = [

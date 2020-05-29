@@ -216,7 +216,7 @@ class signinController extends Controller
             Session::put('admlogin',TRUE);
             return view("/adminredirect");        }
         else{
-            return Redirect::to(URL::previous())->with('message', 'Invalid  and or Passwords');
+            return Redirect::to(URL::previous())->with('message', 'Invalid User and or Passwords');
         }
 
             

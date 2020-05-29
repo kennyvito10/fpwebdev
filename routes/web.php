@@ -60,6 +60,12 @@ Route::get('/admin', function () {
     return view('admin');
 });
 Route::get('/adminloggedin', ['uses' => 'DashboardController@adminlogged']);
+Route::get('/adminaddproduct', ['uses' => 'DashboardController@adminproduct']);
+
+Route::post('/adminaddproduct', ['uses' => 'DashboardController@adminproductadd']);
+
+
+Route::get('/adminredirect', ['uses' => 'DashboardController@adminr']);
 Route::post('/adminredirect', ['uses' => 'signinController@admin']);
 
 Route::patch('/updatestatusordered/{id}', 'DashboardController@checkoutorder');
