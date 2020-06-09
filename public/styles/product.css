@@ -946,7 +946,15 @@ section
 	color: #232323;
 	line-height: 0.75;
 }
+
 .product_price
+{
+	font-size: 24px;
+	font-weight: 600;
+	margin-top: 9px;
+	color: #8a8a8a;
+}
+.product_p
 {
 	font-size: 24px;
 	font-weight: 600;
@@ -1246,6 +1254,14 @@ section
 	color: #e95a5a;
 }
 .product_price
+{
+	font-size: 16px;
+	font-weight: 500;
+	color: #6c6a74;
+	line-height: 0.75;
+	margin-top: 13px;
+}
+.product_p
 {
 	font-size: 16px;
 	font-weight: 500;

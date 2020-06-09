@@ -16,7 +16,7 @@
 <!-- Home -->
 
 <div class="home">
-		<div class="home_container">
+		<div class="home_container wow bounceInDown">
 			<div class="home_background" style="background-image:url(assets/samsung.jpg)"></div>
 			<div class="home_content_container">
 				<div class="container">

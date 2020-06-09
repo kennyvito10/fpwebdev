@@ -95,7 +95,7 @@
 
 	<div class="avds">
 		<div class="avds_container d-flex flex-lg-row flex-column align-items-start justify-content-between">
-			<div class="avds_small">
+			<div class="avds_small  wow fadeInLeft">
 				<div class="avds_background" style="background-image:url(assets/iphone11.jpg)"></div>
 				<div class="avds_small_inner">
 					<div class="avds_discount_container">
@@ -113,7 +113,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="avds_large">
+			<div class="avds_large  wow fadeInRight">
 				<div class="avds_background" style="background-image:url(assets/oppo.jpg)"></div>
 				<div class="avds_large_container">
 					<div class="avds_large_content">
@@ -133,7 +133,7 @@
 			<div class="row icon_box_row">
 				
 				<!-- Icon Box -->
-				<div class="col-lg-4 icon_box_col">
+				<div class="col-lg-4 icon_box_col wow bounceInLeft">
 					<div class="icon_box">
 						<div class="icon_box_image"><img src="images/icon_1.svg" alt=""></div>
 						<div class="icon_box_title">Free Shipping Throughout Indonesia</div>
@@ -144,7 +144,7 @@
 				</div>
 
 				<!-- Icon Box -->
-				<div class="col-lg-4 icon_box_col">
+				<div class="col-lg-4 icon_box_col wow bounceInDown">
 					<div class="icon_box">
 						<div class="icon_box_image"><img src="images/icon_2.svg" alt=""></div>
 						<div class="icon_box_title">Full Warranty</div>
@@ -155,7 +155,7 @@
 				</div>
 
 				<!-- Icon Box -->
-				<div class="col-lg-4 icon_box_col">
+				<div class="col-lg-4 icon_box_col wow bounceInRight">
 					<div class="icon_box">
 						<div class="icon_box_image"><img src="images/icon_3.svg" alt=""></div>
 						<div class="icon_box_title">24h Full Support</div>

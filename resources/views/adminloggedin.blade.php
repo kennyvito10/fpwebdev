@@ -33,6 +33,7 @@
     <th scope="col">Bill Id </th>
       <th scope="col">Customer Name</th>
       <th scope="col">Customer Id</th>
+      <th scope="col">Customer Address</th>
       <th scope="col">Status</th>
       <th scope="col">Date And Time</th>
       <th scope="col">Edit</th>
@@ -43,13 +44,14 @@
   <tbody>
   @foreach($data as $d)
     <tr>
-      <th scope="row">{{$d->billid}}</th>
-      <td>{{$d->fullName}}</td>
-      <td>{{$d->user_id}}</td>
-      <td>{{$d->statusname}}</td>
-      <td>{{$d->created_at}}</td>
+      <th scope="row">{{$d['billid']}}</th>
+      <td>{{$d['fullName']}}</td>
+      <td>{{$d['user_id']}}</td>
+      <td>{{$d['address']}},{{$d['city']}},{{$d['province']}},{{$d['postalCode']}},{{$d['notes']}} </td>
+      <td>{{$d['statusname']}}</td>
+      <td>{{$d['created_at']}}</td>
       <td>
-      <form method="post" action="updatestatusdelivered/{{$d->billid}}" style="display:inline-block">
+      <form method="post" action="updatestatusdelivered/{{$d['billid']}}" style="display:inline-block">
                                 @method('patch')
                                 @csrf  
                                 <button type="submit" class="btn btn-primary">Deliver</button></a>
@@ -69,6 +71,7 @@
     <th scope="col">Bill Id </th>
       <th scope="col">Customer Name</th>
       <th scope="col">Customer Id</th>
+      <th scope="col">Customer Address</th>
       <th scope="col">Status</th>
       <th scope="col">Date And Time</th>
       <th scope="col">Edit</th>
@@ -78,13 +81,14 @@
   <tbody>
   @foreach($datadelivered as $d)
     <tr>
-      <th scope="row">{{$d->billid}}</th>
-      <td>{{$d->fullName}}</td>
-      <td>{{$d->user_id}}</td>
-      <td>{{$d->statusname}}</td>
-      <td>{{$d->created_at}}</td>
+      <th scope="row">{{$d['billid']}}</th>
+      <td>{{$d['fullName']}}</td>
+      <td>{{$d['user_id']}}</td>
+      <td>{{$d['address']}},{{$d['city']}},{{$d['province']}},{{$d['postalCode']}},{{$d['notes']}} </td>
+      <td>{{$d['statusname']}}</td>
+      <td>{{$d['created_at']}}</td>
       <td>
-      <form method="post" action="updatestatusfinished/{{$d->billid}}" style="display:inline-block">
+      <form method="post" action="updatestatusfinished/{{$d['billid']}}" style="display:inline-block">
                                 @method('patch')
                                 @csrf  
                                 <button type="submit" class="btn btn-primary">Finish</button></a>
@@ -103,6 +107,7 @@
     <th scope="col">Bill Id </th>
       <th scope="col">Customer Name</th>
       <th scope="col">Customer Id</th>
+      <th scope="col">Customer Address</th>
       <th scope="col">Status</th>
       <th scope="col">Date And Time</th>
 
@@ -111,11 +116,12 @@
   <tbody>
   @foreach($datafinished as $d)
     <tr>
-      <th scope="row">{{$d->billid}}</th>
-      <td>{{$d->fullName}}</td>
-      <td>{{$d->user_id}}</td>
-      <td>{{$d->statusname}}</td>
-      <td>{{$d->created_at}}</td>
+      <th scope="row">{{$d['billid']}}</th>
+      <td>{{$d['fullName']}}</td>
+      <td>{{$d['user_id']}}</td>
+      <td>{{$d['address']}},{{$d['city']}},{{$d['province']}},{{$d['postalCode']}},{{$d['notes']}} </td>
+      <td>{{$d['statusname']}}</td>
+      <td>{{$d['created_at']}}</td>
       
     @endforeach
     
@@ -130,6 +136,7 @@
     <th scope="col">Bill Id </th>
       <th scope="col">Customer Name</th>
       <th scope="col">Customer Id</th>
+      <th scope="col">Customer Address</th>
       <th scope="col">Status</th>
       <th scope="col">Date And Time</th>
       <th scope="col">Edit</th>
@@ -139,13 +146,14 @@
   <tbody>
   @foreach($data as $d)
     <tr>
-      <th scope="row">{{$d->billid}}</th>
-      <td>{{$d->fullName}}</td>
-      <td>{{$d->user_id}}</td>
-      <td>{{$d->statusname}}</td>
-      <td>{{$d->created_at}}</td>
+      <th scope="row">{{$d['billid']}}</th>
+      <td>{{$d['fullName']}}</td>
+      <td>{{$d['user_id']}}</td>
+      <td>{{$d['address']}},{{$d['city']}},{{$d['province']}},{{$d['postalCode']}},{{$d['notes']}} </td>
+      <td>{{$d['statusname']}}</td>
+      <td>{{$d['created_at']}}</td>
       <td>
-      <form method="post" action="updatestatusdelivered/{{$d->billid}}" style="display:inline-block">
+      <form method="post" action="updatestatusdelivered/{{$d['billid']}}" style="display:inline-block">
                                 @method('patch')
                                 @csrf  
                                 <button type="submit" class="btn btn-primary">Deliver</button></a>

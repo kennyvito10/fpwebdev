@@ -14,7 +14,7 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_container">
+		<div class="home_container  wow bounceInDown">
 			<div class="home_background" style="background-image:url(images/categories.jpg)"></div>
 			<div class="home_content_container">
 				<div class="container">
@@ -22,7 +22,7 @@
 						<div class="col">
 							<div class="home_content">
 								<div class="home_title">Smart Phones<span>.</span></div>
-								<div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
+								<div class="home_text"><p></p></div>
 							</div>
 						</div>
 					</div>
@@ -50,7 +50,6 @@
 										<ul>
 											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default</span></li>
 											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
-											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Name</span></li>
 										</ul>
 									</li>
 								</ul>
@@ -66,11 +65,11 @@
 					@foreach($data as $d)
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/{{$d->imgUrl}}" alt=""></div>
-							<div class="product_extra product_new"><a href="categories.html">New</a></div>
+							<div class="product_image"><img src="images/{{$d['imgUrl']}}" alt="" style="height:240px;width:240px"></div>
 							<div class="product_content">
-								<div class="product_title"><a href="/product/{{$d->productid}}">{{$d->productName}}</a></div>
-								<div class="product_price">Rp. {{$d->price}}</div>
+								<div class="product_title"><a href="/product/{{$d['productid']}}">{{$d['productName']}}</a></div>
+								<p style="float:left; font-size:16px">Rp</p>
+								<div class="product_price">{{$d['price']}}</div>
 							</div>
 						</div>
 					@endforeach

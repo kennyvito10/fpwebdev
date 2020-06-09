@@ -20,7 +20,7 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_container">
+		<div class="home_container  wow bounceInDown">
 			<div class="home_background" style="background-image:url(images/categories.jpg)"></div>
 			<div class="home_content_container">
 				<div class="container">
@@ -55,8 +55,7 @@
 										<i class="fa fa-chevron-down" aria-hidden="true"></i>
 										<ul>
 											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default</span></li>
-											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "products.price" }'><span>Price</span></li>
-											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Name</span></li>
+											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
 										</ul>
 									</li>
 								</ul>
@@ -72,10 +71,11 @@
 					@foreach($data as $d)
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/{{$d->imgUrl}}" alt="" style="height:240px;width:240px"></div>
+							<div class="product_image"><img src="images/{{$d['imgUrl']}}" alt="" style="height:240px;width:240px"></div>
 							<div class="product_content">
-								<div class="product_title"><a href="/product/{{$d->productid}}">{{$d->productName}}</a></div>
-								<div class="product_price">Rp. {{$d->price}}</div>
+								<div class="product_title"><a href="/product/{{$d['productid']}}">{{$d['productName']}}</a></div>
+								<p style="float:left; font-size:16px">Rp</p>
+								<div class="product_price" >{{$d['price']}}</div>
 							</div>
 						</div>
 					@endforeach

@@ -60,6 +60,12 @@ Route::get('/admin', function () {
     return view('admin');
 });
 Route::get('/adminloggedin', ['uses' => 'DashboardController@adminlogged']);
+Route::get('/adminviewproducts', ['uses' => 'DashboardController@adminviewproduct']);
+Route::delete('/deletep/{id}', ['uses' => 'DashboardController@deletep']);
+Route::get('/avp/{pid}', ['uses' => 'DashboardController@viewproductedit']);
+Route::patch('/editproduct/{id}', 'DashboardController@adminproductedit');
+
+
 Route::get('/adminaddproduct', ['uses' => 'DashboardController@adminproduct']);
 
 Route::post('/adminaddproduct', ['uses' => 'DashboardController@adminproductadd']);

@@ -7,17 +7,18 @@
 </head>
 <body>
 
-<a href="{{ url('/adminredirect') }}"><button  class="btn btn-primary">Back</button></a>
-
-<form method="post" id="formImgInp" action="/adminaddproduct" enctype="multipart/form-data">
+<a href="{{ url('/adminviewproducts') }}"><button  class="btn btn-primary">Back</button></a>
+@foreach($data as $d)
+<form method="post" id="formImgInp" action="/editproduct/{{$d['productid']}}" enctype="multipart/form-data" >
+@method('patch')
 						@csrf
   <div class="form-group">
     <label for="exampleInputEmail1">Product Name</label>
-    <input name ="productname"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input name ="productname"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$d['productName']}}">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Price(in Rupiah)</label>
-    <input name="productprice" class="form" id="exampleInputPassword1">
+    <input name="productprice" class="form" id="exampleInputPassword1" value="{{$d['price']}}">
   </div>
 
   <div class="form-group">
@@ -28,8 +29,9 @@
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Product Description</label>
-    <textarea name ="productdesc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea name ="productdesc" class="form-control" id="exampleFormControlTextarea1" rows="3" >{{$d['description']}}</textarea>
   </div>
+  @endforeach
   
   <div class="form-group col-md-4">
       <label for="inputState">Brand</label>
@@ -38,7 +40,7 @@
         <option value="{{$d['brandid']}}" >{{$d['brandName']}}</option>
       @endforeach
       </select>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
 

@@ -78,11 +78,11 @@
 					<!-- Name -->
 					<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
 						<div class="cart_item_image">
-							<div><img src="images/{{$d->imgUrl}}" alt="" style="width:150px; height:150px;"></div>
+							<div><img src="images/{{$d['imgUrl']}}" alt="" style="width:150px; height:150px;"></div>
 						</div>
 						<div class="cart_item_name_container">
-							<div class="cart_item_name"><a href="/product/{{$d->productid}}">{{$d->productName}}</a></div>
-							<form action="/deleteitem/{{$d->billdetailid}}" method="post" class="d-inline">
+							<div class="cart_item_name"><a href="/product/{{$d['productid']}}">{{$d['productName']}}</a></div>
+							<form action="/deleteitem/{{$d['billdetailid']}}" method="post" class="d-inline">
 						@method('delete')
 						@csrf
 						<button class="bbutton">Delete</button>
@@ -94,21 +94,21 @@
 
 					
 					<!-- Price -->
-					<div class="cart_item_price">Rp. {{$d->price}}</div>
+					<div class="cart_item_price">Rp. {{$d['price']}}</div>
 					<!-- Quantity -->
 					<div class="cart_item_quantity">
 						<div class="product_quantity_container">
 							
-								<span style="color:black">{{$d->qty}}</span>
+								<span style="color:black">{{$d['qty']}}</span>
 								
 							
 						</div>
 					</div>
 					<!-- Total -->
 					<?php
-					$subt = $d->price*$d->qty;
+					$subt = $d['price']*$d['qty'];
 					$totalprice += $subt;
-					$currentbillid = $d->bill_id;
+					$currentbillid = $d['bill_id'];
 					?>
 					<div class="cart_item_total">Rp. {{$subt}}</div>
 				</div>
@@ -117,7 +117,9 @@
 				
 				
 				
-
+				@endforeach	
+<?php
+}?>
 				
 				
 				
@@ -189,9 +191,7 @@
 					</div>
 				</div>
 
-				@endforeach	
-<?php
-}?>
+				
 			</div>
 		</div>		
 	</div>

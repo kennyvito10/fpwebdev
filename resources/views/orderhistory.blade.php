@@ -79,20 +79,20 @@
 					<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
 						
 						<div class="cart_item_name_container">
-							<div class="cart_item_name"><a href="/history/{{$d->billid}}">Order</a></div>
+							<div class="cart_item_name"><a href="/history/{{$d['billid']}}">Order</a></div>
 						</div>
 					</div>
 
 					
 					
 					<!-- Date -->
-					<div class="cart_item_price">{{$d->created_at}} </div>
+					<div class="cart_item_price">{{$d['created_at']}} </div>
 					
 					
 					<div class="cart_item_quantity">
 						<div class="product_quantity_container">
 							
-								<span style="color:black">{{$d->statusname}}</span>
+								<span style="color:black">{{$d['statusname']}}</span>
 								
 							
 						</div>

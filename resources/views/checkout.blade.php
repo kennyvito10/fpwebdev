@@ -58,9 +58,9 @@
 							@foreach($da as $d)
 							
 								<?php
-					$subt = $d->price*$d->qty;
+					$subt = $d['price']*$d['qty'];
 					$totalprice += $subt;
-					$currentbillid = $d->bill_id;
+					$currentbillid = $d['bill_id'];
 					?>
 					@endforeach
 

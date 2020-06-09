@@ -16,7 +16,7 @@
 <!-- Home -->
 
 <div class="home">
-		<div class="home_container">
+		<div class="home_container wow bounceInDown">
 			<div class="home_background"><img src="{{ url('assets/samsung.jpg') }}" alt="" class = "home_background"></div>
 			<div class="home_content_container">
 				<div class="container">

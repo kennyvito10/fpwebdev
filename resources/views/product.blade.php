@@ -38,16 +38,16 @@
 				<!-- Product Image -->
 				<div class="col-lg-6">
 					<div class="details_image">
-						<div class="details_image_large"><img class="img-fluid" src="{{ url('images/'.$d->imgUrl.'') }}" alt="" class="details_image_large"><div class="product_extra product_new"><a href="categories.html">New</a></div></div>
+						<div class="details_image_large"><img class="img-fluid" src="{{ url('images/'.$d['imgUrl'].'') }}" alt="" class="details_image_large"><div class="product_extra product_new"><a href="categories.html">New</a></div></div>
 					</div>
 				</div>
 				
 				<!-- Product Content -->
 				<div class="col-lg-6">
 					<div class="details_content">
-						<div class="details_name">{{$d->productName}}</div>
+						<div class="details_name">{{$d['productName']}}</div>
 						
-						<div class="details_price">Rp. {{$d->price}}</div>
+						<div class="details_price">Rp. {{$d['price']}}</div>
 				
 						<!-- In Stock -->
 						<div class="in_stock_container">
@@ -55,14 +55,14 @@
 							<span>In Stock</span>
 						</div>
 						<div class="details_text">
-							<p>{{$d->description}}</p>
+							<p>{{$d['description']}}</p>
 						</div>
 
 						<!-- Product Quantity -->
 						<div class="product_quantity_container">
 							<div class="product_quantity clearfix">
 								<span>Qty</span>
-								<form action="/addcart/{{$d->productid}}" method="post" >
+								<form action="/addcart/{{$d['productid']}}" method="post" >
 								@csrf
 								
 								<input id="quantity_input" name="quantity" type="text" pattern="[0-9]*" value="1">
@@ -71,14 +71,12 @@
 									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
 								</div>
 							</div>
-							<!-- <div class="button cart_button"> -->
-							<!-- <a href="/addcart/{{$d->productid}}">Add to cart</a> -->
 							<button class="buttonn" type="submit">Add To Cart</button>
 							</form>
-							<!-- </div> -->
+							
 						</div>
 
-						<!-- Share -->
+						
 						
 					</div>
 				</div>
@@ -90,7 +88,7 @@
 						<div class="description_title">Description</div>
 					</div>
 					<div class="description_text">
-						<p>{{$d->description}}</p>
+						<p>{{$d['description']}}</p>
 					</div>
 				</div>
 			</div>
@@ -114,10 +112,10 @@
 					@foreach($related_data as $da)
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="{{ url('images/'.$da->imgUrl.'') }}" alt="" style="width:200px;height:200px"></div>
+							<div class="product_image"><img src="{{ url('images/'.$da['imgUrl'].'') }}" alt="" style="width:200px;height:200px"></div>
 							<div class="product_content">
-								<div class="product_title"><a href="/product/{{$da->productid}}">{{$da->productName}}</a></div>
-								<div class="product_price">Rp. {{$da->price}}</div>
+								<div class="product_title"><a href="/product/{{$da['productid']}}">{{$da['productName']}}</a></div>
+								<div class="product_price">Rp. {{$da['price']}}</div>
 							</div>
 						</div>
 					@endforeach

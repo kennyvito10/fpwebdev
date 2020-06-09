@@ -15,7 +15,7 @@
 
 <!-- Home -->
 
-<div class="home">
+<div class="home wow bounceInDown">
 		<div class="home_container">
 			<div class="home_background" style="background-image:url(assets/aboutus.png)"></div>
 			<div class="home_content_container">
@@ -46,21 +46,21 @@
 				<!-- Get in touch -->
 				<div class="col-lg-8 contact_col">
 					<div class="get_in_touch">
-						<div class="section_title">What is KW Cell?</div>
-						<div class="section_subtitle">KW Cell is an online marketplace where you can purchase brand new phone at the lowest price of all online markets. A Final Web Development and Security Project created by : <br><br><br><br></div>
+						<div class="section_title wow fadeInDown">What is KW Cell?</div>
+						<div class="section_subtitle wow fadeInDown">KW Cell is an online marketplace where you can purchase brand new phone at the lowest price of all online markets. A Final Web Development and Security Project created by : <br><br><br><br></div>
 					<div class="row">
-						<div class="col-xl-6"><img src="assets/kenny.png" alt=""></div>
-						<div><img src="assets/wely.png" alt=""></div>
+						<div class="col-xl-6 wow zoomIn"><img src="assets/kenny.png" alt=""></div>
+						<div class="wow zoomIn"><img src="assets/wely.png" alt=""></div>
 					</div>
 					<div class="row">
-						<div class="section_subtitle col-xl-6">Klementinus Kennyvito Salim<br>2201811391 - Binus University International</div>
-						<div class="section_subtitle col-xl-6">Wely Dharma Putra<br>2201808365 - Binus University International</div>
+						<div class="section_subtitle col-xl-6 wow fadeInUp">Klementinus Kennyvito Salim<br>2201811391 - Binus University International</div>
+						<div class="section_subtitle col-xl-6 wow fadeInUp">Wely Dharma Putra<br>2201808365 - Binus University International</div>
 					</div>
 					</div>
 				</div>
 
 				<!-- Contact Info -->
-				<div class="col-lg-3 offset-xl-1 contact_col">
+				<div class="col-lg-3 offset-xl-1 contact_col wow bounceInRight">
 					<div class="contact_info">
 						<div class="contact_info_section">
 							<div class="contact_info_title">Customer Support</div>
