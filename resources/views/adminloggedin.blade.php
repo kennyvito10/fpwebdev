@@ -45,9 +45,17 @@
   @foreach($data as $d)
     <tr>
       <th scope="row">{{$d['billid']}}</th>
-      <td>{{$d['fullName']}}</td>
+      <?php
+      $decoded = Http::get('http://127.0.0.1:8780/api/auth/viewuser/'.$d['user_id'])[0]
+      ?>
+      <td>{{$decoded['fullName']}}</td>
       <td>{{$d['user_id']}}</td>
-      <td>{{$d['address']}},{{$d['city']}},{{$d['province']}},{{$d['postalCode']}},{{$d['notes']}} </td>
+      <td>{{$decoded['address']}},
+      {{$decoded['city']}},
+      {{$decoded['province']}},
+      {{$decoded['postalCode']}},
+      {{$decoded['notes']}},
+      </td>
       <td>{{$d['statusname']}}</td>
       <td>{{$d['created_at']}}</td>
       <td>
@@ -82,9 +90,17 @@
   @foreach($datadelivered as $d)
     <tr>
       <th scope="row">{{$d['billid']}}</th>
-      <td>{{$d['fullName']}}</td>
+      <?php
+      $decoded = Http::get('http://127.0.0.1:8780/api/auth/viewuser/'.$d['user_id'])[0]
+      ?>
+      <td>{{$decoded['fullName']}}</td>
       <td>{{$d['user_id']}}</td>
-      <td>{{$d['address']}},{{$d['city']}},{{$d['province']}},{{$d['postalCode']}},{{$d['notes']}} </td>
+      <td>{{$decoded['address']}},
+      {{$decoded['city']}},
+      {{$decoded['province']}},
+      {{$decoded['postalCode']}},
+      {{$decoded['notes']}},
+      </td>
       <td>{{$d['statusname']}}</td>
       <td>{{$d['created_at']}}</td>
       <td>
@@ -117,9 +133,17 @@
   @foreach($datafinished as $d)
     <tr>
       <th scope="row">{{$d['billid']}}</th>
-      <td>{{$d['fullName']}}</td>
+      <?php
+      $decoded = Http::get('http://127.0.0.1:8780/api/auth/viewuser/'.$d['user_id'])[0]
+      ?>
+      <td>{{$decoded['fullName']}}</td>
       <td>{{$d['user_id']}}</td>
-      <td>{{$d['address']}},{{$d['city']}},{{$d['province']}},{{$d['postalCode']}},{{$d['notes']}} </td>
+      <td>{{$decoded['address']}},
+      {{$decoded['city']}},
+      {{$decoded['province']}},
+      {{$decoded['postalCode']}},
+      {{$decoded['notes']}},
+      </td>
       <td>{{$d['statusname']}}</td>
       <td>{{$d['created_at']}}</td>
       
@@ -147,9 +171,17 @@
   @foreach($data as $d)
     <tr>
       <th scope="row">{{$d['billid']}}</th>
-      <td>{{$d['fullName']}}</td>
+      <?php
+      $decoded = Http::get('http://127.0.0.1:8780/api/auth/viewuser/'.$d['user_id'])[0]
+      ?>
+      <td>{{$decoded['fullName']}}</td>
       <td>{{$d['user_id']}}</td>
-      <td>{{$d['address']}},{{$d['city']}},{{$d['province']}},{{$d['postalCode']}},{{$d['notes']}} </td>
+      <td>{{$decoded['address']}},
+      {{$decoded['city']}},
+      {{$decoded['province']}},
+      {{$decoded['postalCode']}},
+      {{$decoded['notes']}},
+      </td>
       <td>{{$d['statusname']}}</td>
       <td>{{$d['created_at']}}</td>
       <td>

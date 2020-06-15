@@ -61,7 +61,7 @@ class signinController extends Controller
             $api = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/getUserToken', [
+            ])->get('http://127.0.0.1:8780/api/auth/getUserToken', [
                 
                 "email"=>$request->session()->get('email')
                 
@@ -73,7 +73,7 @@ class signinController extends Controller
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$apitoken
     
-            ])->get('http://127.0.0.1:8080/api/auth/seeprofile', [
+            ])->get('http://127.0.0.1:8780/api/auth/seeprofile', [
                 
                 "email"=>$request->session()->get('email')           
             ]);
@@ -119,7 +119,7 @@ class signinController extends Controller
             $api = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/getUserToken', [
+            ])->get('http://127.0.0.1:8780/api/auth/getUserToken', [
                 
                 "email"=>$request->session()->get('email')
                 
@@ -131,7 +131,7 @@ class signinController extends Controller
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$apitoken
     
-            ])->get('http://127.0.0.1:8080/api/auth/seeprofile', [
+            ])->get('http://127.0.0.1:8780/api/auth/seeprofile', [
                 
                 "email"=>$request->session()->get('email')           
             ]);
@@ -174,7 +174,7 @@ class signinController extends Controller
         $api = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/getUserToken', [
+        ])->get('http://127.0.0.1:8780/api/auth/getUserToken', [
             
 	        "email"=>$request->input('email'),
             
@@ -190,7 +190,7 @@ class signinController extends Controller
             'Accept' => 'application/json',
             'Authorization' => 'Bearer '.$apitoken
 
-        ])->post('http://127.0.0.1:8080/api/auth/login', [
+        ])->post('http://127.0.0.1:8780/api/auth/login', [
             
 	        "email"=>$request->input('email'),
 	        "password"=>$request->input('password'),
@@ -317,7 +317,7 @@ class signinController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->post('http://127.0.0.1:8080/api/auth/signup', [
+        ])->post('http://127.0.0.1:8780/api/auth/signup', [
             "province"=>$request->input('province'),
 	"city"=>$request->input('city'),
 	"address"=>$request->input('address'),
@@ -359,7 +359,7 @@ class signinController extends Controller
             $api = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/getUserToken', [
+            ])->get('http://127.0.0.1:8780/api/auth/getUserToken', [
                 
                 "email"=>$request->session()->get('email')
                 
@@ -371,7 +371,7 @@ class signinController extends Controller
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$apitoken
     
-            ])->patch('http://127.0.0.1:8080/api/auth/updateprofile', [
+            ])->patch('http://127.0.0.1:8780/api/auth/updateprofile', [
                 
                 "email"=>$request->session()->get('email'),
                 "fullName" => $request->input('fullName'),
@@ -387,6 +387,7 @@ class signinController extends Controller
             ]);
 
             $user = json_decode($response->body(), true);
+            //dump($user);
         
         
      return Redirect::to("/dashboard");
@@ -398,7 +399,15 @@ class signinController extends Controller
         $us = $request->input("adminuser");
         $pass = $request->input("pw");
 
-        if($us == 'admin' and $pass == 'kwcell123456789'){
+        $admin = Http::withHeaders([
+            'Accept' => 'application/json',
+
+        ])->get('http://127.0.0.1:8780/api/auth/loginadmin', [
+        ]);
+        $admintoken = json_decode($admin->body(), true);
+      
+
+        if($us == $admintoken[0]['usradmin'] and Hash::check($pass, $admintoken[0]['pwadmin'])){
             Session::put('admlogin',TRUE);
             return view("/adminredirect");        }
         else{

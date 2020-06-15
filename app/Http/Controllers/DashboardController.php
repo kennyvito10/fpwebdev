@@ -559,14 +559,19 @@ class DashboardController extends Controller
     
             ])->get('http://127.0.0.1:8080/api/auth/adminvieworder', [  
             ]);
+            // $re = Http::get('http://127.0.0.1:8780/api/auth/viewuser/2');
+            // $r = json_decode($re->body(), true);
+
+            
     
             $user = json_decode($response->body(), true);
             $data = $user['data'];
             $datadelivered = $user['datadelivered'];
             $datafinished = $user['datafinished'];
+            
 
             return view('/adminloggedin', compact("data","datadelivered","datafinished"));
-            //dump($data);
+            //dump($r);
         }
         
     }
