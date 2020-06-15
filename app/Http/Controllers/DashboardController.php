@@ -44,27 +44,6 @@ class DashboardController extends Controller
             return view("signin");
         }
         else{
-
-            // $data = DB::table('bills')
-            //             -> join('users','users.id','=','bills.user_id')
-            //             -> join('stats','stats.statusid','=','bills.status')
-            //             ->where('bills.user_id',$request->session()->get('id'))
-            //             ->where('bills.status',1)
-            //             -> get();
-            // $count = $data->count();
-            // if($count != 0){
-            //     foreach ($data as $d) {
-            //         $currentbillid = $d->billid;
-            //     }
-
-            //     $da = DB::table('billdetails')
-            //             -> join('products','billdetails.product_id','=','products.productid')
-            //             ->where('bill_id',$currentbillid)
-            //             -> get();
-            //     $countda = $da->count();
-        
-            // }
-
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
@@ -72,14 +51,7 @@ class DashboardController extends Controller
                 "id"=>$request->session()->get('id')
                          
             ]);
-    
-            
-    
             $user = json_decode($response->body(), true);
-    
-        //     foreach ($user as $dat) {
-        //         $data = $dat['data'];
-        //  }
             $da = $user['da'];
             $count = $user['count'];
             $countda = $user['countda'];
@@ -91,7 +63,6 @@ class DashboardController extends Controller
 
     public function deleteproductcart($billdetail)
         {
-            // Billdetail::destroy($billdetail);
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
@@ -99,13 +70,10 @@ class DashboardController extends Controller
                 "billdetail"=>$billdetail 
             ]);
             $user = json_decode($response->body(), true);
-            // dump($user);
             return Redirect::to("cart");
         }
 
     public function deleteallcart($currentbillid){
-        // DB::delete('delete from billdetails where bill_id = ?',[$currentbillid]);
-        // DB::delete('delete from bills where billid = ?',[$currentbillid]);
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
@@ -114,7 +82,6 @@ class DashboardController extends Controller
         ]);
 
         $user = json_decode($response->body(), true);
-        //dump($user);
         return Redirect::to("cart");
     }
 
@@ -123,36 +90,6 @@ class DashboardController extends Controller
             return view("signin");
         }
         else{
-
-            // $data = DB::table('bills')
-            //             -> join('users','users.id','=','bills.user_id')
-            //             // -> join('billdetails','billdetails.bill_id','=','bills.billid')
-            //             -> join('stats','stats.statusid','=','bills.status')
-            //             ->where('bills.user_id',$request->session()->get('id'))
-            //             ->where('bills.status', '!=' , 1)
-            //             -> get();
-
-            // $data = DB::table('bills')
-            //             ->join('users','users.id','=','bills.user_id')
-            //             ->join('stats','stats.statusid','=','bills.status')
-            //             ->where('bills.user_id', $request->session()->get('id'))
-            //             ->where('bills.status', '!=' , 1)
-            //             ->get(["billid",
-            //             "user_id",
-            //             "status",
-            //             "bills.created_at",
-            //             "bills.updated_at" ,
-            //             "id",
-            //             "email",
-            //             "password",
-            //             "fullName",
-            //             "phoneNumber",
-            //             "addressID",
-            //             "statusid",
-            //             "statusname"]);
-            
-            // $count = $data->count();
-
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
@@ -161,27 +98,10 @@ class DashboardController extends Controller
             ]);
     
             $user = json_decode($response->body(), true);
-
-            // if($count != 0){
-            //     foreach ($data as $d) {
-            //         $currentbillid = $d->billid;
-            //         $da = DB::table('billdetails')
-            //                 -> join('products','billdetails.product_id','=','products.productid')
-            //                 -> join('bills','bills.billid','=','billdetails.bill_id')
-            //                 ->where('bill_id',$currentbillid)
-            //                 -> get();
-
-            //         $countda = $da->count();
-
-            //     }
-
-        
-            //}
             $data = $user['data'];
             $count = $user['count'];
             return view('/orderhistory', compact("data","count"));
-            // return view('/orderhistory', compact("data", "da","count","countda"));
-            //dump($data);
+
             
            
         } 
@@ -193,11 +113,6 @@ class DashboardController extends Controller
             return view("signin");
         }
         else{
-                // $da = DB::table('billdetails')
-                //         -> join('products','billdetails.product_id','=','products.productid')
-                //         ->where('bill_id',$historyid)
-                //         -> get();
-                // $countda = $da->count();
 
                 $response = Http::withHeaders([
                     'Accept' => 'application/json',
@@ -219,10 +134,6 @@ class DashboardController extends Controller
 
     public function showallproducts(Product $product)
     {
-        // $data = DB::table('products')
-        //                 -> join('brands','brands.brandid','=','products.brand_id')
-        //                 -> get();
-        // $count = $data->count();
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
@@ -235,33 +146,16 @@ class DashboardController extends Controller
 
         $user = json_decode($response->body(), true);
 
-    //     foreach ($user as $dat) {
-    //         $data = $dat['data'];
-    //  }
         $data = $user['data'];
         $count = $user['count'];
         
 
-        // return $user['data'];
-        
-        // foreach ($user as $dat) {
-            //     $data = $dat['data'];
-            //     $count = $dat['count'];
-            // }
-            
-             //dump($data);
-            // return $user['count'];
         return view('/allproducts', compact("data","count"));
     }
 
 
     public function showproductapple(Product $product)
     {
-        // $data = DB::table('products')
-        //                 -> join('brands','brands.brandid','=','products.brand_id')
-        //                 ->where('brandid',1)
-        //                 -> get();
-        // $count = $data->count();
 
         $response = Http::withHeaders([
             'Accept' => 'application/json',
@@ -278,20 +172,13 @@ class DashboardController extends Controller
         $data = $user['data'];
         $count = $user['count'];
         
-             //dump($data);
-            // return $user['count'];
+        
             
         return view('/apple', compact("data","count"));
     }
 
     public function showproductsamsung(Product $product)
     {
-        // $data = DB::table('products')
-        //                 -> join('brands','brands.brandid','=','products.brand_id')
-        //                 ->where('brandid',2)
-        //                 -> get();
-        // $count = $data->count();
-
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
@@ -310,12 +197,6 @@ class DashboardController extends Controller
 
     public function showproductoppo(Product $product)
     {
-        // $data = DB::table('products')
-        //                 -> join('brands','brands.brandid','=','products.brand_id')
-        //                 ->where('brandid',3)
-        //                 -> get();
-        // $count = $data->count();
-
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
@@ -334,11 +215,6 @@ class DashboardController extends Controller
 
     public function showproductxiaomi(Product $product)
     {
-        // $data = DB::table('products')
-        //                 -> join('brands','brands.brandid','=','products.brand_id')
-        //                 ->where('brandid',4)
-        //                 -> get();
-        // $count = $data->count();
 
         $response = Http::withHeaders([
             'Accept' => 'application/json',
@@ -377,40 +253,7 @@ class DashboardController extends Controller
             return view("signin");
         }
         else{
-        // $data = DB::table('bills')
-        //                 -> join('users','users.id','=','bills.user_id')
-        //                 -> join('stats','stats.statusid','=','bills.status')
-        //                 ->where('bills.user_id',$request->session()->get('id'))
-        //                 ->where('bills.status',1)
-        //                 -> get();
-        // $count = $data->count();
-        // if ($count == 0) {
-        //     Bill::create([
-        //         'user_id' => $request->session()->get('id'),
-        //         'status' => 1,
-        //     ]);
-        //     $bid = DB::table('bills')
-        //     ->where('user_id',$request->session()->get('id'))
-        //     ->get()->last()->billid;
-
-        //     $billdetail = new Billdetail;
-        //     $billdetail->bill_id =  $bid;
-        //     $billdetail->product_id = $productid;
-        //     $billdetail->qty =  $request->input('quantity');
-        //     $billdetail->save();
-        //     }
-            // else{
-
-            //     foreach ($data as $d) {
-            //         $currentbillid = $d->billid;
-            //     }
-            //         $billdetail = new Billdetail;
-            //         $billdetail->bill_id =  $currentbillid;
-            //         $billdetail->product_id = $productid;
-            //         $billdetail->qty =  $request->input('quantity');
-            //         $billdetail->save();
-
-            // }
+        
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
@@ -421,10 +264,6 @@ class DashboardController extends Controller
             ]);
     
             $user = json_decode($response->body(), true);
-
-            //return $user;
-
-            
  
         return Redirect::to('/cart');
             }
@@ -435,25 +274,6 @@ class DashboardController extends Controller
             return view("signin");
         }
         else{
-            // $data = DB::table('bills')
-            //             -> join('users','users.id','=','bills.user_id')
-            //             -> join('stats','stats.statusid','=','bills.status')
-            //             ->where('bills.user_id',$request->session()->get('id'))
-            //             ->where('bills.status',1)
-            //             -> get();
-            // $count = $data->count();
-            // if($count != 0){
-            //     foreach ($data as $d) {
-            //         $currentbillid = $d->billid;
-            //     }
-
-            //     $da = DB::table('billdetails')
-            //             -> join('products','billdetails.product_id','=','products.productid')
-            //             ->where('bill_id',$currentbillid)
-            //             -> get();
-            //     $countda = $da->count();
-        
-            // }
 
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
@@ -476,10 +296,6 @@ class DashboardController extends Controller
     }
 
     public function checkoutorder(Request $request, $id){
-        // $data = [
-        //     'status' => 2,
-        // ];
-        // Bill::where('billid',$id)->update($data);
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
@@ -488,7 +304,6 @@ class DashboardController extends Controller
         ]);
 
         $user = json_decode($response->body(), true);
-        //dump($user);
     
     
  return Redirect::to("/dashboard");
@@ -500,67 +315,11 @@ class DashboardController extends Controller
             return view('/admin');
         }else{
 
-            // $data = DB::table('bills')
-            //             -> join('users','users.id','=','bills.user_id')
-            //             -> join('stats','stats.statusid','=','bills.status')
-            //             ->where('bills.status',2)
-            //             ->get(["billid",
-            //             "user_id",
-            //             "status",
-            //             "bills.created_at",
-            //             "bills.updated_at" ,
-            //             "id",
-            //             "email",
-            //             "password",
-            //             "fullName",
-            //             "phoneNumber",
-            //             "addressID",
-            //             "statusid",
-            //             "statusname"]);
-
-            // $datadelivered = DB::table('bills')
-            // -> join('users','users.id','=','bills.user_id')
-            // -> join('stats','stats.statusid','=','bills.status')
-            // ->where('bills.status',3)
-            // ->get(["billid",
-            // "user_id",
-            // "status",
-            // "bills.created_at",
-            // "bills.updated_at" ,
-            // "id",
-            // "email",
-            // "password",
-            // "fullName",
-            // "phoneNumber",
-            // "addressID",
-            // "statusid",
-            // "statusname"]);
-
-            // $datafinished = DB::table('bills')
-            //             -> join('users','users.id','=','bills.user_id')
-            //             -> join('stats','stats.statusid','=','bills.status')
-            //             ->where('bills.status',4)
-            //             ->get(["billid",
-            //             "user_id",
-            //             "status",
-            //             "bills.created_at",
-            //             "bills.updated_at" ,
-            //             "id",
-            //             "email",
-            //             "password",
-            //             "fullName",
-            //             "phoneNumber",
-            //             "addressID",
-            //             "statusid",
-            //             "statusname"]);
-
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
             ])->get('http://127.0.0.1:8080/api/auth/adminvieworder', [  
             ]);
-            // $re = Http::get('http://127.0.0.1:8780/api/auth/viewuser/2');
-            // $r = json_decode($re->body(), true);
 
             
     
@@ -571,7 +330,6 @@ class DashboardController extends Controller
             
 
             return view('/adminloggedin', compact("data","datadelivered","datafinished"));
-            //dump($r);
         }
         
     }
@@ -638,21 +396,7 @@ class DashboardController extends Controller
         $image_url = $input['imagename'];
         $destinationPath = public_path('/images');
         $image->move($destinationPath,$image_url);
-        // $data = [
-        //     'productName' => $request->input('productname'), 
-        //     'price' => $request->input('productprice'),
-        //     'imgUrl' => $image ,
-        //     'brand_id' => $request->input('productbrand'), 
-        //     'description'=> $request->input('productdesc')
-        // ];
-        // Product::create($data);
-        // Product::create([
-        //     'productName' => $request->input('productname'), 
-        //     'price' => $request->input('productprice'),
-        //     'imgUrl' => $image_url ,
-        //     'brand_id' => $request->input('productbrand'), 
-        //     'description'=> $request->input('productdesc')
-        // ]);
+        
 
         $addproduct = Http::withHeaders([
             'Accept' => 'application/json',
@@ -710,7 +454,6 @@ return Redirect::to("/adminloggedin");
 
 public function deletep($id)
         {
-            // Billdetail::destroy($billdetail);
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
@@ -718,7 +461,6 @@ public function deletep($id)
                 "productid"=>$id 
             ]);
             $user = json_decode($response->body(), true);
-            //dump($user);
             return Redirect::to("adminviewproducts");
         }
 
@@ -773,16 +515,6 @@ public function deletep($id)
             ]);
     
             $ap = json_decode($addproduct->body(), true);
-    
-            // $response = Http::withHeaders([
-            //     'Accept' => 'application/json',
-    
-            // ])->get('http://127.0.0.1:8080/api/auth/getbrand', [  
-            // ]);
-    
-            // $user = json_decode($response->body(), true);
-            // $databrand = $user['databrand'];
-            //dump($ap);
             return view('/adminviewproducts');
     
         }
