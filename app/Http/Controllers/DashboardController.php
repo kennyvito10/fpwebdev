@@ -26,11 +26,62 @@ class DashboardController extends Controller
 
 
     
-    public function homeIndex()
+    public function homeIndex(Request $request)
     {
         if (Session::get('login') == FALSE) return view('welcome');
-        $users = User::all();
-        return view('dashboard', ['users' => $users]);
+        if (Session::get('login') == TRUE){
+            $api = Http::withHeaders([
+                'Accept' => 'application/json',
+    
+            ])->get(env('API_URL2', '34.101.73.220').'/api/auth/getUserToken', [
+                
+                "email"=>$request->session()->get('email')
+                
+            ]);
+            $apitoken = json_decode($api->body(), true);
+    
+    
+            $response = Http::withHeaders([
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer '.$apitoken
+    
+            ])->get(env('API_URL2', '34.101.73.220').'/api/auth/seeprofile', [
+                
+                "email"=>$request->session()->get('email')           
+            ]);
+
+            $user = json_decode($response->body(), true);
+    
+            
+            foreach ($user as $dat) {
+                $id = $dat['id'];
+                $email = $dat['email'];
+                $fullName = $dat['fullName'];
+                $phoneNumber = $dat['phoneNumber'];
+                $addressID = $dat['addressID'];
+                $province = $dat['province'];
+                $city = $dat['city'];
+                $address = $dat['address'];
+                $postalCode = $dat['postalCode'];
+                $notes = $dat['notes'];
+
+                Session::put('id',$id);
+                Session::put('email',$email);
+                Session::put('fullName',$fullName);
+                Session::put('phoneNumber',$phoneNumber);
+                Session::put('addressID',$addressID);
+                Session::put('province',$province);
+                Session::put('city',$city);
+                Session::put('address',$address);
+                Session::put('postalCode',$postalCode);
+                Session::put('notes',$notes);
+                Session::put('login',TRUE);
+            }
+            
+
+            return view('dashboard');
+        }
+        
     }
 
     public function logout(Request $request) {
@@ -47,7 +98,7 @@ class DashboardController extends Controller
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/seecart', [
+            ])->get(env('API_URL', '34.101.143.10').'/api/auth/seecart', [
                 "id"=>$request->session()->get('id')
                          
             ]);
@@ -66,7 +117,7 @@ class DashboardController extends Controller
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->delete('http://127.0.0.1:8080/api/auth/deleteproductcart/', [
+            ])->delete(env('API_URL', '34.101.143.10').'/api/auth/deleteproductcart/', [
                 "billdetail"=>$billdetail 
             ]);
             $user = json_decode($response->body(), true);
@@ -77,7 +128,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/deletecart/', [
+        ])->get(env('API_URL', '34.101.143.10').'/api/auth/deletecart/', [
             "currentbillid"=>$currentbillid 
         ]);
 
@@ -93,7 +144,7 @@ class DashboardController extends Controller
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/vieworder/', [
+            ])->get(env('API_URL', '34.101.143.10').'/api/auth/vieworder/', [
                 "id"=>$request->session()->get('id')
             ]);
     
@@ -117,7 +168,7 @@ class DashboardController extends Controller
                 $response = Http::withHeaders([
                     'Accept' => 'application/json',
         
-                ])->get('http://127.0.0.1:8080/api/auth/showhistory/', [
+                ])->get(env('API_URL', '34.101.143.10').'/api/auth/showhistory/', [
                     "historyid"=>$historyid
                 ]);
         
@@ -137,7 +188,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/allproducts', [
+        ])->get(env('API_URL', '34.101.143.10').'/api/auth/allproducts', [
             
                      
         ]);
@@ -160,7 +211,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/apple', [
+        ])->get(env('API_URL', '34.101.143.10').'/api/auth/apple', [
             
                      
         ]);
@@ -182,7 +233,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/samsung', [
+        ])->get(env('API_URL', '34.101.143.10').'/api/auth/samsung', [
             
                      
         ]);
@@ -200,7 +251,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/oppo', [
+        ])->get(env('API_URL', '34.101.143.10').'/api/auth/oppo', [
             
                      
         ]);
@@ -219,7 +270,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/xiaomi', [  
+        ])->get(env('API_URL', '34.101.143.10').'/api/auth/xiaomi', [  
         ]);
 
         $user = json_decode($response->body(), true);
@@ -234,7 +285,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/product', [  
+        ])->get(env('API_URL', '34.101.143.10').'/api/auth/product', [  
 
             "productid"=>$productid  
         ]);
@@ -257,7 +308,7 @@ class DashboardController extends Controller
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->post('http://127.0.0.1:8080/api/auth/addtocart', [  
+            ])->post(env('API_URL', '34.101.143.10').'/api/auth/addtocart', [  
                 "id"=>$request->session()->get('id'),
                 "productid"=>$productid,
                 "quantity"=>$request->input('quantity')  
@@ -278,7 +329,7 @@ class DashboardController extends Controller
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/seecheckout', [  
+            ])->get(env('API_URL', '34.101.143.10').'/api/auth/seecheckout', [  
                 "id"=>$request->session()->get('id'), 
             ]);
     
@@ -299,7 +350,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->patch('http://127.0.0.1:8080/api/auth/checkoutorder', [  
+        ])->patch(env('API_URL', '34.101.143.10').'/api/auth/checkoutorder', [  
             "billid"=>$id 
         ]);
 
@@ -318,7 +369,7 @@ class DashboardController extends Controller
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/adminvieworder', [  
+            ])->get(env('API_URL', '34.101.143.10').'/api/auth/adminvieworder', [  
             ]);
 
             
@@ -352,7 +403,7 @@ class DashboardController extends Controller
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/getproduct', [  
+            ])->get(env('API_URL', '34.101.143.10').'/api/auth/getproduct', [  
             ]);
     
             $user = json_decode($response->body(), true);
@@ -371,7 +422,7 @@ class DashboardController extends Controller
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/getbrand', [  
+            ])->get(env('API_URL', '34.101.143.10').'/api/auth/getbrand', [  
             ]);
     
             $user = json_decode($response->body(), true);
@@ -401,7 +452,7 @@ class DashboardController extends Controller
         $addproduct = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->post('http://127.0.0.1:8080/api/auth/adminaddproduct', [  
+        ])->post(env('API_URL', '34.101.143.10').'/api/auth/adminaddproduct', [  
             "productname" => $request->input('productname'), 
             "productprice" => $request->input('productprice'),
             "image_url" => $image_url ,
@@ -414,7 +465,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8080/api/auth/getbrand', [  
+        ])->get(env('API_URL', '34.101.143.10').'/api/auth/getbrand', [  
         ]);
 
         $user = json_decode($response->body(), true);
@@ -428,7 +479,7 @@ class DashboardController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->patch('http://127.0.0.1:8080/api/auth/updateadminstatusdelivered', [  
+        ])->patch(env('API_URL', '34.101.143.10').'/api/auth/updateadminstatusdelivered', [  
             "billid"=>$id 
         ]);
 
@@ -442,7 +493,7 @@ public function updateAdminStatusFinished(Request $request, $id){
     $response = Http::withHeaders([
         'Accept' => 'application/json',
 
-    ])->patch('http://127.0.0.1:8080/api/auth/updateadminstatusfinished', [  
+    ])->patch(env('API_URL', '34.101.143.10').'/api/auth/updateadminstatusfinished', [  
         "billid"=>$id 
     ]);
 
@@ -457,10 +508,11 @@ public function deletep($id)
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->delete('http://127.0.0.1:8080/api/auth/deletep/', [
+            ])->delete(env('API_URL', '34.101.143.10').'/api/auth/deletep', [
                 "productid"=>$id 
             ]);
             $user = json_decode($response->body(), true);
+            //dump($user);
             return Redirect::to("adminviewproducts");
         }
 
@@ -468,7 +520,7 @@ public function deletep($id)
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/getproductbyid', [ 
+            ])->get(env('API_URL', '34.101.143.10').'/api/auth/getproductbyid', [ 
                 "productid"=>$pid 
             ]);
     
@@ -478,7 +530,7 @@ public function deletep($id)
             $brand = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8080/api/auth/getbrand', [  
+            ])->get(env('API_URL', '34.101.143.10').'/api/auth/getbrand', [  
             ]);
     
             $brandd = json_decode($brand->body(), true);
@@ -505,7 +557,7 @@ public function deletep($id)
             $addproduct = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->patch('http://127.0.0.1:8080/api/auth/admineditproduct', [ 
+            ])->patch(env('API_URL', '34.101.143.10').'/api/auth/admineditproduct', [ 
                 "pid"=> $id,
                 "productname" => $request->input('productname'), 
                 "productprice" => $request->input('productprice'),

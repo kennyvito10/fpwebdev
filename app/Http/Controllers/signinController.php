@@ -36,7 +36,7 @@ class signinController extends Controller
             return view("signin");
         }
         else{
-            return Redirect::to("/");
+            return Redirect::to("/dashboard");
         } 
     }
 
@@ -61,7 +61,7 @@ class signinController extends Controller
             $api = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8780/api/auth/getUserToken', [
+            ])->get(env('API_URL2', '34.101.73.220').'/api/auth/getUserToken', [
                 
                 "email"=>$request->session()->get('email')
                 
@@ -73,7 +73,7 @@ class signinController extends Controller
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$apitoken
     
-            ])->get('http://127.0.0.1:8780/api/auth/seeprofile', [
+            ])->get(env('API_URL2', '34.101.73.220').'/api/auth/seeprofile', [
                 
                 "email"=>$request->session()->get('email')           
             ]);
@@ -119,7 +119,7 @@ class signinController extends Controller
             $api = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8780/api/auth/getUserToken', [
+            ])->get(env('API_URL2', '34.101.73.220').'/api/auth/getUserToken', [
                 
                 "email"=>$request->session()->get('email')
                 
@@ -131,7 +131,7 @@ class signinController extends Controller
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$apitoken
     
-            ])->get('http://127.0.0.1:8780/api/auth/seeprofile', [
+            ])->get(env('API_URL2', '34.101.73.220').'/api/auth/seeprofile', [
                 
                 "email"=>$request->session()->get('email')           
             ]);
@@ -174,7 +174,7 @@ class signinController extends Controller
         $api = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8780/api/auth/getUserToken', [
+        ])->get(env('API_URL2', '34.101.73.220').'/api/auth/getUserToken', [
             
 	        "email"=>$request->input('email'),
             
@@ -190,7 +190,7 @@ class signinController extends Controller
             'Accept' => 'application/json',
             'Authorization' => 'Bearer '.$apitoken
 
-        ])->post('http://127.0.0.1:8780/api/auth/login', [
+        ])->post(env('API_URL2', '34.101.73.220').'/api/auth/login', [
             
 	        "email"=>$request->input('email'),
 	        "password"=>$request->input('password'),
@@ -238,7 +238,7 @@ class signinController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->post('http://127.0.0.1:8780/api/auth/signup', [
+        ])->post(env('API_URL2', '34.101.73.220').'/api/auth/signup', [
             "province"=>$request->input('province'),
 	"city"=>$request->input('city'),
 	"address"=>$request->input('address'),
@@ -260,7 +260,7 @@ class signinController extends Controller
             $api = Http::withHeaders([
                 'Accept' => 'application/json',
     
-            ])->get('http://127.0.0.1:8780/api/auth/getUserToken', [
+            ])->get(env('API_URL2', '34.101.73.220').'/api/auth/getUserToken', [
                 
                 "email"=>$request->session()->get('email')
                 
@@ -272,7 +272,7 @@ class signinController extends Controller
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$apitoken
     
-            ])->patch('http://127.0.0.1:8780/api/auth/updateprofile', [
+            ])->patch(env('API_URL2', '34.101.73.220').'/api/auth/updateprofile', [
                 
                 "email"=>$request->session()->get('email'),
                 "fullName" => $request->input('fullName'),
@@ -302,7 +302,7 @@ class signinController extends Controller
         $admin = Http::withHeaders([
             'Accept' => 'application/json',
 
-        ])->get('http://127.0.0.1:8780/api/auth/loginadmin', [
+        ])->get(env('API_URL2', '34.101.73.220').'/api/auth/loginadmin', [
         ]);
         $admintoken = json_decode($admin->body(), true);
       

@@ -46,7 +46,7 @@
     <tr>
       <th scope="row">{{$d['billid']}}</th>
       <?php
-      $decoded = Http::get('http://127.0.0.1:8780/api/auth/viewuser/'.$d['user_id'])[0]
+      $decoded = Http::get(env('API_URL2', '34.101.73.220').'/api/auth/viewuser/'.$d['user_id'])[0]
       ?>
       <td>{{$decoded['fullName']}}</td>
       <td>{{$d['user_id']}}</td>
@@ -91,7 +91,7 @@
     <tr>
       <th scope="row">{{$d['billid']}}</th>
       <?php
-      $decoded = Http::get('http://127.0.0.1:8780/api/auth/viewuser/'.$d['user_id'])[0]
+      $decoded = Http::get(env('API_URL2', '34.101.73.220').'/api/auth/viewuser/'.$d['user_id'])[0]
       ?>
       <td>{{$decoded['fullName']}}</td>
       <td>{{$d['user_id']}}</td>
@@ -134,7 +134,7 @@
     <tr>
       <th scope="row">{{$d['billid']}}</th>
       <?php
-      $decoded = Http::get('http://127.0.0.1:8780/api/auth/viewuser/'.$d['user_id'])[0]
+      $decoded = Http::get(env('API_URL2', '34.101.73.220').'/api/auth/viewuser/'.$d['user_id'])[0]
       ?>
       <td>{{$decoded['fullName']}}</td>
       <td>{{$d['user_id']}}</td>
@@ -172,7 +172,7 @@
     <tr>
       <th scope="row">{{$d['billid']}}</th>
       <?php
-      $decoded = Http::get('http://127.0.0.1:8780/api/auth/viewuser/'.$d['user_id'])[0]
+      $decoded = Http::get(env('API_URL2', '34.101.73.220').'/api/auth/viewuser/'.$d['user_id'])[0]
       ?>
       <td>{{$decoded['fullName']}}</td>
       <td>{{$d['user_id']}}</td>

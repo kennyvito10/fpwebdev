@@ -92,6 +92,42 @@
 
 		
 	</header>
+
+	<!-- Menu -->
+
+	<div class="menu menu_mm trans_300">
+		<div class="menu_container menu_mm">
+			<div class="page_menu_content">
+							
+				<ul class="page_menu_nav menu_mm">
+					<li class="page_menu_item has-children menu_mm">
+						<a href="{{ url('/') }}">Home<i class="fa fa-angle-down"></i></a>
+						<ul class="page_menu_selection menu_mm">
+							<li class="page_menu_item menu_mm"><a href="{{ url('/allproducts') }}">Product<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="{{ url('/cart') }}">Cart<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="{{ url('/checkout') }}">Checkout<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="{{ url('/orderhistory') }}">Orders<i class="fa fa-angle-down"></i></a></li>
+						</ul>
+					</li>
+					<li class="page_menu_item has-children menu_mm">
+						<a href="{{ url('/allproducts') }}">products<i class="fa fa-angle-down"></i></a>
+						<ul class="page_menu_selection menu_mm">
+							<li class="page_menu_item menu_mm"><a href="{{ url('/apple') }}">Apple<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="{{ url('/samsung') }}">Samsung<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="{{ url('/oppo') }}">Oppo<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="{{ url('/xiaomi') }}">Xiaomi<i class="fa fa-angle-down"></i></a></li>
+						</ul>
+					</li>
+					<li class="page_menu_item menu_mm"><a href="{{ url('/aboutus') }}">About Us<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="{{ url('/signup') }}">Sign Up<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="{{ url('/signin') }}">Sign In<i class="fa fa-angle-down"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+		</div>
      
     @yield('container')
 
