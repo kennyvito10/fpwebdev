@@ -9,7 +9,7 @@
 
 ## About KWCELL
 KWCELL is an online marketplace where you can buy smartphones with the best possible price. A WADS project created by Klementinus Kennyvito Salim and Wely Dharma Putra
-- Created using Laravel Version 7.1.1
+- Created using Laravel Version 7.10.3
 - Database MySQL Service
 - Used Google Cloud Platform for cloud storage
 - Implemented Cloudflare service
