@@ -22,8 +22,8 @@ KWCELL is an online marketplace where you can buy smartphones with the best poss
 - In the server, download all the extensions needed such as server, install the latest php, apache
 - Create a database from the sql file. (kwcell_api)
 - Upload the SQL File
-- Upload the necessary backend Codes (github.com/kennyvito10/fpwebdev)
-- Repeat for a second database (kwcell_api2)
+- Upload the necessary backend Codes (Products & Bills Function)(https://github.com/kennyvito10/fpwebdev_api)  Database provided in DBSQL folder.
+- Repeat for a second database (Users & Admins Function) (kwcell_api2) (https://github.com/kennyvito10/fpwebdev_api2) Database provided in DBSQL folder.
 - Create a Google Cloud Platform virtual machine.
 - Set up VM and take the ip from google cloud platform and add record of dns to cloudflare.
 - Open ssh server from GCP.
