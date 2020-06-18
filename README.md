@@ -20,8 +20,9 @@ KWCELL is an online marketplace where you can buy smartphones with the best poss
 - Set up VM and take the ip from google cloud platform and add record of dns to cloudflare.
 - Open ssh server from GCP.
 - In the server, download all the extensions needed such as server, install the latest php, apache
-- Upload the SQL File
 - Create a database from the sql file. (kwcell_api)
+- Upload the SQL File
+- Upload the necessary backend Codes (github.com/kennyvito10/fpwebdev)
 - Repeat for a second database (kwcell_api2)
 - Create a Google Cloud Platform virtual machine.
 - Set up VM and take the ip from google cloud platform and add record of dns to cloudflare.
